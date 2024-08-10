@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaMask Integration</title>
+    <style>
+        /* Include your existing CSS styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .closeBtn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .closeBtn:hover,
+        .closeBtn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="getStartedButton">Get Started</button>
+
+    <!-- Modal for MetaMask Login -->
+    <div id="loginDialog" class="modal">
+        <div class="modal-content">
+            <span class="closeBtn">&times;</span>
+            <p>Login with MetaMask to continue.</p>
+            <button id="loginMetaMask">Connect MetaMask</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById('loginDialog');
+            var getStartedButton = document.getElementById('getStartedButton');
+            var closeBtn = document.getElementsByClassName('closeBtn')[0];
+            var loginMetaMaskButton = document.getElementById('loginMetaMask');
+
+            // Open modal when 'Get Started' button is clicked
+            getStartedButton.onclick = function() {
+                modal.style.display = 'block';
+            };
+
+            // Close modal when 'X' is clicked
+            closeBtn.onclick = function() {
+                modal.style.display = 'none';
+            };
+
+            // Close modal when clicking outside of it
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            };
+
+            // Connect MetaMask
+            loginMetaMaskButton.onclick = async function() {
+                if (window.ethereum) {
+                    try {
+                        // Request account access
+                        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                        console.log('Connected account:', accounts[0]);
+                        modal.style.display = 'none'; // Close the modal after successful login
+                    } catch (error) {
+                        console.error('User rejected the request:', error);
+                    }
+                } else {
+                    console.error('MetaMask is not installed');
+                }
+            };
+        });
+    </script>
+</body>
+</html>'

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CureSphere Hospital Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+       body {
+    font-family: Montserrat;
+    margin: 0;
+    padding: 0;
+    
+    background-size: cover;
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('services2.jpeg');
+    background-attachment: fixed;
+}
+.bg-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    z-index: -1;
+}
+
+        .header {
+            width: 100%;
+            background-color: white; 
+            margin-bottom: 60px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px; 
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            font-size: x-large;
+            font-weight: 600;
+            color: rgb(8, 8, 60);
+        }
+
+        .logo-container img {
+            height: 50px; 
+            margin-right: 10px; 
+        }
+
+        .nav-links {
+            float: right;
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .nav-links li a:link, .nav-links li a:visited {
+            color: rgb(75, 72, 72);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 90%;
+            border-bottom: 1px solid transparent;
+            padding: 8px 0;
+            transition: border-bottom 0.2s;
+        }
+
+        .nav-links li a:hover, .nav-links li a:active {
+            border-bottom: 2px solid rgb(33, 19, 91);
+            color: rgb(19, 19, 128);
+        }
+
+        .resized-icon {
+            height: 50px;
+            width: 50px;
+        }
+
+        .active-card {
+            background-color: rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+        }
+
+        #patientsCard.active-card {
+            background-color: rgba(59, 131, 246, 0.499); /* Darker blue */
+        }
+
+        #appointmentsCard.active-card {
+            background-color: rgba(52, 211, 153, 0.575); /* Darker green */
+        }
+
+        #recordsCard.active-card {
+            background-color: rgba(253, 230, 138, 0.7); /* Darker yellow */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+        <div class="bg-blur"></div>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="CURESPHERE logo.png" alt="CureSphere Logo">
+                <p>CureSphere</p>
+            </div>
+            <nav class="nav-links">
+                <ul>                    
+                    <li><a href="#" id="logoutLink">Logout</a><ion-icon name="power"></ion-icon></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container mx-auto flex-grow flex flex-col lg:flex-row mt-8 space-y-8 lg:space-y-0 lg:space-x-8">
+        <!-- Sidebar -->
+        <aside class="w-full lg:w-1/4 bg-white shadow p-4 rounded-lg">
+            <div class="text-center">
+                <ion-icon name="contact" class="resized-icon"></ion-icon>
+                <h2 class="mt-4 text-xl font-semibold">Mr. Naman Sharma</h2>
+                <p class="text-gray-600">Hospital Admin</p>
+            </div>
+            <nav class="mt-8">
+                <a href="#" id="dashboardLink" class="block px-4 py-2 mt-2 text-sm text-gray-600 bg-gray-100 rounded-lg hover:bg-blue-100">Dashboard</a>
+                <a href="#" id="patientsLink" class="block px-4 py-2 mt-2 text-sm text-gray-600 rounded-lg hover:bg-blue-100">Patients</a>
+                <a href="#" id="appointmentsLink" class="block px-4 py-2 mt-2 text-sm text-gray-600 rounded-lg hover:bg-blue-100">Appointments</a>
+                <a href="#" id="recordsLink" class="block px-4 py-2 mt-2 text-sm text-gray-600 rounded-lg hover:bg-blue-100">Medical Records</a>
+            </nav>
+        </aside>
+
+        <!-- Main Dashboard -->
+        <main class="flex-grow bg-white shadow p-6 rounded-lg">
+            <h1 class="text-2xl font-semibold mb-6">Dashboard</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Patients Card -->
+                <div id="patientsCard" class="bg-blue-100 p-4 rounded-lg shadow">
+                    <h2 class="text-xl font-semibold text-blue-600 mb-2">Patients</h2>
+                    <ul>
+                        <li class="mb-4">
+                            <p class="text-gray-700">Shikhar Batra</p>
+                            <p class="text-gray-500 text-sm">Room: 101</p>
+                        </li>
+                        
+                    </ul>
+                </div>
+
+                <!-- Appointments Card -->
+                <div id="appointmentsCard" class="bg-green-100 p-4 rounded-lg shadow">
+                    <h2 class="text-xl font-semibold text-green-600 mb-2">Appointments</h2>
+                    <ul>
+                        <li class="mb-2">
+                            <p class="text-gray-700">Dr. Ravi Kant - General Checkup</p>
+                            <p class="text-gray-500 text-sm">August 15, 2024 - 10:00 AM</p>
+                        </li>
+                        <li class="mb-2">
+                            <p class="text-gray-700">Dr. Vishal Kaushik - Dental Cleaning</p>
+                            <p class="text-gray-500 text-sm">August 20, 2024 - 2:00 PM</p>
+                        </li>
+                        
+                    </ul>
+                </div>
+
+                <!-- Medical Records Card -->
+                <div id="recordsCard" class="bg-yellow-100 p-4 rounded-lg shadow">
+                    <h2 class="text-xl font-semibold text-yellow-600 mb-2">Medical Records</h2>
+                    <ul>
+                        <li class="mb-2">
+                            <p class="text-gray-700">Blood Test Results</p>
+                            <p class="text-gray-500 text-sm">4fde039455cf0006c0bc...</p>
+                        </li>
+                        <li class="mb-2">
+                            <p class="text-gray-700">X-Ray Report</p>
+                            <p class="text-gray-500 text-sm">1P8hzUnQn1VYbDwsGkNm...</p>
+                        </li>
+                        <li>
+                            <p class="text-gray-700">MRI Scan</p>
+                            <p class="text-gray-500 text-sm">e72313ce97318588f3800...</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script>
+        document.getElementById('logoutLink').addEventListener('click', (event) => {
+            event.preventDefault();
+            // Add your logout logic here, for example, clearing session storage or cookies
+            alert('You have been logged out.');
+            window.location.href = "blockchainwebsite.html"; // Redirect to main page after logout
+        });
+
+        // Add click event listeners to navbar links
+        document.getElementById('dashboardLink').addEventListener('click', () => highlightCard(''));
+        document.getElementById('patientsLink').addEventListener('click', () => highlightCard('patientsCard'));
+        document.getElementById('appointmentsLink').addEventListener('click', () => highlightCard('appointmentsCard'));
+        document.getElementById('recordsLink').addEventListener('click', () => highlightCard('recordsCard'));
+
+        function highlightCard(cardId) {
+            // Remove the active class from all cards
+            document.querySelectorAll('.grid > div').forEach(card => {
+                card.classList.remove('active-card');
+            });
+
+            // Add the active class to the selected card
+            if (cardId) {
+                document.getElementById(cardId).classList.add('active-card');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CureSphere Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('bggood.jpg');
+            background-size: cover;
+        }
+        .container {
+            margin: 100px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-box {
+            background-color: white;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            max-width: 24rem;
+            width: 100%;
+        }
+        .login-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: #2D3748;
+            margin-bottom: 1.5rem;
+        }
+        .input-label {
+            display: block;
+            color: #4A5568;
+            font-weight: medium;
+            margin-bottom: 0.5rem;
+        }
+        .input-field {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: 1px solid #E2E8F0;
+            border-radius: 0.5rem;
+            outline: none;
+            transition: box-shadow 0.3s;
+        }
+        .input-field:focus {
+            box-shadow: 0 0 0 2px #2563EB;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+        }
+        .checkbox {
+            height: 1rem;
+            width: 1rem;
+            color: #2563EB;
+            border: 1px solid #CBD5E0;
+            border-radius: 0.25rem;
+        }
+        .checkbox-label {
+            margin-left: 0.5rem;
+            color: #4A5568;
+        }
+        .forgot-password {
+            color: #2563EB;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        .login-button {
+            width: 100%;
+            background-color: #2b498a;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s;
+        }
+        .login-button:hover {
+            background-color: #1D4ED8;
+        }
+        .login-as {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #4A5568;
+        }
+        .login-options {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .login-option {
+            background-color: #10B981;
+            color: white;
+            padding: 10px;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s;
+            margin: 0 0.5rem;
+        }
+        .login-option:hover {
+            background-color: #059669;
+        }
+        .login-option-purple {
+            background-color: #8B5CF6;
+        }
+        .login-option-purple:hover {
+            background-color: #7C3AED;
+        }
+        .login-option-yellow {
+            background-color: #F59E0B;
+        }
+        .login-option-yellow:hover {
+            background-color: #D97706;
+        }
+    </style>
+</head>
+<body class="font-roboto">
+    <div class="container">
+        <div class="login-box">
+            <h1 class="login-title">CureSphere Login</h1>
+            <div class="mb-4">
+                <label for="username" class="input-label">Username</label>
+                <input type="text" id="username" class="input-field" placeholder="Enter your username" >
+            </div>
+            <div class="mb-6">
+                <label for="password" class="input-label">Password</label>
+                <input type="password" id="password" class="input-field" placeholder="Enter your password">
+            </div>
+            <div class="flex items-center justify-between mb-6">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="remember" class="checkbox">
+                    <label for="remember" class="checkbox-label">Remember me</label>
+                </div>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+            <button class="login-button">Login</button>
+            <div class="mt-6 login-as">
+                <p>Login as:</p>
+                <div class="login-options">
+                    <a href="#" class="login-option">Insurance Partner</a>
+                    <a href="#" class="login-option login-option-purple">Hospital</a>
+                    <a href="#" class="login-option login-option-yellow">Patient</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

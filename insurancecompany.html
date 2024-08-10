@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CureSphere Insurance Partner Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Montserrat;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('bgnew.jpg');
+            background-attachment: fixed;
+        }
+        .bg-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            z-index: -1;
+        }
+        .header {
+            width: 100%;
+            background-color: white; 
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px; 
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            font-size: x-large;
+            font-weight: 600;
+            color: rgb(8, 8, 60);
+        }
+        .logo-container img {
+            height: 50px; 
+            margin-right: 10px; 
+        }
+        .nav-links {
+            float: right;
+            list-style: none;
+        }
+        .nav-links li {
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .nav-links li a:link, .nav-links li a:visited {
+            color: rgb(75, 72, 72);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 90%;
+            border-bottom: 1px solid transparent;
+            padding: 8px 0;
+            transition: border-bottom 0.2s;
+        }
+        .nav-links li a:hover, .nav-links li a:active {
+            border-bottom: 2px solid rgb(33, 19, 91);
+            color: rgb(19, 19, 128);
+        }
+        .resized-icon {
+            height: 50px;
+            width: 50px;
+        }
+        .hidden {
+            display: none;
+        }
+        .active-card {
+            background-color: rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+        }
+        #policiesCard.active-card {
+            background-color: rgba(59, 130, 246, 0.7); /* Darker blue */
+        }
+        #claimsCard.active-card {
+            background-color: rgba(52, 211, 153, 0.7); /* Darker green */
+        }
+        #patientsCard.active-card {
+            background-color: rgba(253, 230, 138, 0.7); /* Darker yellow */
+        }
+        #pointeruser {
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1); /* Adjust shadow parameters as needed */
+            padding: 8px; /* Optional: Add some padding for better visual spacing */
+            border-radius: 8px; /* Optional: Add rounded corners */
+            background-color: #fff; /* Optional: Add background color if needed */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="bg-blur"></div>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="CURESPHERE logo.png" alt="CureSphere Logo">
+                <p>CureSphere</p>
+            </div>
+            <nav class="nav-links">
+                <ul>                    
+                    <li><a href="#" id="logoutLink">Logout</a><ion-icon name="power"></ion-icon></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto flex-grow flex flex-col lg:flex-row mt-8 space-y-8 lg:space-y-0 lg:space-x-8">
+        <!-- Sidebar -->
+        <aside class="w-full lg:w-1/4 bg-white shadow p-4 rounded-lg">
+            <div class="text-center">
+                <ion-icon name="contact" class="resized-icon"></ion-icon>
+                <h2 class="mt-4 text-xl font-semibold">Mr. Arun Puri</h2>
+                <p class="text-gray-600">Insurance Partner</p>
+            </div>
+            <nav class="mt-8">
+                <a href="#" id="dashboardLink" class="block px-4 py-2 mt-2 text-sm text-gray-600 bg-gray-100 rounded-lg hover:bg-blue-100">Dashboard</a>
+                <a href="#" id="policiesLink" class="block px-4 py-2 mt-2 text-sm text-gray-600 rounded-lg hover:bg-blue-100">Policies</a>
+                <a href="#" id="claimsLink" class="block px-4 py-2 mt-2 text-sm text-gray-600 rounded-lg hover:bg-blue-100">Claims</a>
+                <a href="#" id="patientsLink" class="block px-4 py-2 mt-2 text-sm text-gray-600 rounded-lg hover:bg-blue-100">Patients</a>
+            </nav>
+        </aside>
+
+        <!-- Main Dashboard -->
+        <main class="flex-grow bg-white shadow p-6 rounded-lg">
+            <h1 class="text-2xl font-semibold mb-6">Dashboard</h1>
+            <div id="dashboardSection">
+                <!-- Dashboard content here -->
+            </div>
+            <div id="policiesCard" class="hidden bg-blue-100 p-4 rounded-lg shadow">
+                <h2 class="text-xl font-semibold text-blue-600 mb-2">Policies</h2>
+                <ul>
+                    <li class="mb-2" id="pointeruser">
+                        <p class="text-gray-700">Policy Number: 971103405</p>
+                        <p class="text-gray-500 text-sm">Shikhar Batra - Full Coverage</p>
+                    </li>
+                    <li class="mb-2">
+                        <p class="text-gray-700">Policy Number: 789012</p>
+                        <p class="text-gray-500 text-sm">Rajesh Chopra - Partial Coverage</p>
+                    </li>
+                    <li>
+                        <p class="text-gray-700">Policy Number: 345678</p>
+                        <p class="text-gray-500 text-sm">Sumanth Sharma - Full Coverage</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="claimsCard" class="hidden bg-green-100 p-4 rounded-lg shadow">
+                <h2 class="text-xl font-semibold text-green-600 mb-2">Claims</h2>
+                <ul>
+                    <li class="mb-2">
+                        <p class="text-gray-700">Claim Amount: Rs.21,000</p>
+                        <p class="text-gray-500 text-sm">Rajesh Chopra - Pending</p>
+                    </li>
+                    <li>
+                        <p class="text-gray-700">Claim Amount: Rs.65,000</p>
+                        <p class="text-gray-500 text-sm">Sumanth Sharma - Denied</p>
+                    </li>
+                    <li class="mb-2" id="pointeruser">
+                        <p class="text-gray-700">Claim Amount - Rs.1,10,000</p>
+                        <p class="text-gray-500 text-sm">Shikhar Batra - Approved</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="patientsCard" class="hidden bg-yellow-100 p-4 rounded-lg shadow">
+                <h2 class="text-xl font-semibold text-yellow-600 mb-2">Patients</h2>
+                <ul>
+                    <li class="mb-2">
+                        <p class="text-gray-700">Rajesh Chopra</p>
+                        <p class="text-gray-500 text-sm">Policy Number: 789012</p>
+                    </li>
+                    <li class="mb-2" id="pointeruser">
+                        <p class="text-gray-700">Shikhar Batra</p>
+                        <p class="text-gray-500 text-sm">Policy Number: 971103</p>
+                    </li>
+                    <li>
+                        <p class="text-gray-700">Sumanth Sharma</p>
+                        <p class="text-gray-500 text-sm">Policy Number: 345678</p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>  
+    <script>
+        document.getElementById('logoutLink').addEventListener('click', (event) => {
+            event.preventDefault();
+            // Add your logout logic here, for example, clearing session storage or cookies
+            alert('You have been logged out.');
+            window.location.href = "blockchainwebsite.html"; // Redirect to main page after logout
+        });
+
+        // Add click event listeners to navbar links
+        document.getElementById('dashboardLink').addEventListener('click', () => showSection('dashboardSection'));
+        document.getElementById('policiesLink').addEventListener('click', () => showSection('policiesCard'));
+        document.getElementById('claimsLink').addEventListener('click', () => showSection('claimsCard'));
+        document.getElementById('patientsLink').addEventListener('click', () => showSection('patientsCard'));
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('main > div').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Show the selected section
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.remove('hidden');
+            }
+        }
+    </script>  
+</body>
+</html>
